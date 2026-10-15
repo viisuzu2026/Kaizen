@@ -1078,40 +1078,26 @@
     }
 
 
-    // 6. Render Danh sách Ban Kaizen
-
+// 6. Render Danh sách Ban Kaizen
     function renderCommittee(curr) {
-
       const tbody = document.getElementById("committeeBody");
-
-      const list = curr?.committee || [];
-
-
+      
+      // Lấy dữ liệu và cắt bỏ phần tử đầu tiên (dòng tiêu đề bị lọt vào)
+      const rawList = curr?.committee || [];
+      const list = rawList.slice(1); 
 
       if (list.length === 0) {
-
         tbody.innerHTML = `<tr><td colspan="3" class="text-center py-6 text-slate-400 text-xs">Chưa có danh sách Ban Kaizen</td></tr>`;
-
         return;
-
       }
 
-
-
       tbody.innerHTML = list.map(m => `
-
         <tr class="hover:bg-slate-50 transition">
-
           <td class="py-2.5 px-3 font-bold text-slate-800 uppercase whitespace-nowrap">${m.name}</td>
-
           <td class="py-2.5 px-3 text-slate-600">${m.role}</td>
-
           <td class="py-2.5 px-3 text-right font-black text-emerald-600 whitespace-nowrap">${formatMoney(m.fee)}</td>
-
         </tr>
-
       `).join('');
-
     }
 
     
