@@ -520,9 +520,9 @@
     }
 
     // 5. Render Danh sách Ý tưởng nộp Tập đoàn
-    function renderGroupIdeas(curr) {
-      const tbody = document.getElementById("groupIdeasBody");
-      const list = curr?.groupIdeas || [];
+function renderGroupIdeas(curr) {
+    const rawList = curr?.groupIdeas || [];
+    const list = rawList.slice(1); // Bỏ qua dòng 29, chỉ lấy dữ liệu từ dòng 30 trở đi
       const aiCount = list.filter(i => i.isAI).length;
 
       document.getElementById("kpiProgressBadge").innerText = `Đã nộp: ${list.length}/24 ý tưởng (${aiCount} sáng kiến AI)`;
