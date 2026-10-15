@@ -1042,7 +1042,8 @@
 
    // 5. Render Danh sách Ý tưởng nộp Tập đoàn
     function renderGroupIdeas(curr) {
-const list = curr?.groupIdeas || []; // Bỏ .slice(1) để lấy đầy đủ từ dòng 30
+      // Sửa ở đây: Bỏ .slice(1) đi để không bị mất dòng đầu tiên (dòng 30)
+      const list = curr?.groupIdeas || [];
       const aiCount = list.filter(i => i.isAI).length;
 
       document.getElementById("kpiProgressBadge").innerText = `Đã nộp: ${list.length}/24 ý tưởng (${aiCount} sáng kiến AI)`;
@@ -1075,7 +1076,6 @@ const list = curr?.groupIdeas || []; // Bỏ .slice(1) để lấy đầy đủ 
         `;
       }).join('');
     }
-
 
 
     // 6. Render Danh sách Ban Kaizen
